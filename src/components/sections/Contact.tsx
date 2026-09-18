@@ -5,12 +5,28 @@ import { Mail, Phone, MapPin, Send, CheckCircle2 } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function Contact() {
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 5000);
+    setStatus("sending");
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${profile.email}`, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(e.currentTarget),
+      });
+
+      if (!response.ok) {
+        throw new Error("L'envoi a échoué");
+      }
+
+      e.currentTarget.reset();
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -124,20 +140,28 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="bg-slate-900/80 backdrop-blur-xl border border-slate-800 p-8 rounded-3xl shadow-2xl relative"
           >
-            {isSubmitted && (
+            {status === "success" && (
               <div className="absolute inset-0 bg-slate-900/95 backdrop-blur-md rounded-3xl flex flex-col items-center justify-center text-center p-6 z-20 animate-in fade-in duration-300">
                 <CheckCircle2 size={56} className="text-emerald-400 mb-4 animate-bounce" />
                 <h4 className="text-xl font-bold text-white">Message envoyé !</h4>
                 <p className="text-slate-400 text-sm mt-2">
                   Merci pour votre message. Je vous répondrai dans les plus brefs délais.
                 </p>
+                <button
+                  type="button"
+                  onClick={() => setStatus("idle")}
+                  className="mt-6 text-sm text-blue-400 transition-colors hover:text-blue-300"
+                >
+                  Envoyer un autre message
+                </button>
               </div>
             )}
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
                 <label className="block text-xs font-medium text-slate-400 mb-2">Votre nom</label>
-                <input
+                  <input
+                  name="name"
                   type="text"
                   required
                   placeholder="Ex: Jean Dupont"
@@ -147,7 +171,8 @@ export default function Contact() {
 
               <div>
                 <label className="block text-xs font-medium text-slate-400 mb-2">Votre email</label>
-                <input
+                  <input
+                  name="email"
                   type="email"
                   required
                   placeholder="Ex: jean@example.com"
@@ -157,7 +182,8 @@ export default function Contact() {
 
               <div>
                 <label className="block text-xs font-medium text-slate-400 mb-2">Votre message</label>
-                <textarea
+                  <textarea
+                  name="message"
                   rows={5}
                   required
                   placeholder="Décrivez votre projet ou votre demande..."
@@ -167,11 +193,17 @@ export default function Contact() {
 
               <button
                 type="submit"
+                disabled={status === "sending"}
                 className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-medium px-6 py-4 rounded-xl shadow-lg shadow-blue-600/20 hover:shadow-blue-600/40 transition-all cursor-pointer"
               >
-                <span>Envoyer le message</span>
+                <span>{status === "sending" ? "Envoi en cours..." : "Envoyer le message"}</span>
                 <Send size={16} />
               </button>
+              {status === "error" && (
+                <p role="alert" className="text-sm text-red-400">
+                  L&apos;envoi a échoué. Réessayez ou contactez-moi directement par email.
+                </p>
+              )}
             </form>
           </motion.div>
 
