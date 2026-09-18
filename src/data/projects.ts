@@ -17,7 +17,7 @@ export const projects = [
     title: "Système de Gestion d'Hôtel",
     description:
       "Application de gestion hôtelière permettant de gérer les chambres, les réservations, les clients, les paiements et le suivi des activités de l'hôtel.",
-    image: "/images/hotel.png",
+    image: "/images/hotel/hotel1.png",
     images:[],
     technologies: ["Laravel",  "Blade", "Tailwind CSS",  "SQLite"],
     github: "https://github.com/dadj11/Gestion_Hotel_Laravel.git",
@@ -30,9 +30,20 @@ export const projects = [
     description:
       "Application permettant de créer, organiser et suivre des tâches afin de faciliter la gestion des activités et le suivi de leur progression.",
     image: "/images/tasks.png",
-    images:[],
+    images:["/image/tache/tache1.png","/image/tache/tache2.png","/image/tache/tache3.png",],
     technologies: ["Laravel", "Blade", "Tailwind CSS",  "SQLite"],
     github: "https://github.com/dadj11/Tache_ameliorer.git",
+    demo: "#",
+  },
+    {
+    id: 4,
+    title: "Jeu Chat & Souris",
+    description:
+      "Jeu 2D développé en Python dans lequel un chat poursuit des souris, avec gestion des déplacements, collisions et interactions.",
+    image: "/images/chat-souris.png",
+    images: ["/image/jeux_chat/chat1.png","/image/jeux_chat/chat2.png"],
+    technologies: ["Python", "Pygame"],
+    github: "#",
     demo: "#",
   },
 ];
