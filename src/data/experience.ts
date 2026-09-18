@@ -7,7 +7,7 @@ export const experiences = [
     company: "TCHAKALA-Haojue",
     location: "Togo",
     description:
-      "Participation à la conception et au développement d'une application web de gestion de boutiques et de vente en ligne.",
+      "Participation à la conception et au développement d'une application web de gestion de boutiques et de vente en ligne.(YourMarket)",
     technologies: [
       "Laravel",
       "PHP",
