@@ -1,4 +1,5 @@
 import { useState } from "react";
+import cv from "../../assets/documents/CV_DADJA_Lamanawa_Godwin_1.pdf";
 import { Menu, X, Download } from "lucide-react";
 
 export default function Navbar() {
@@ -46,7 +47,7 @@ export default function Navbar() {
         {/* Action Button (Desktop) */}
         <div className="hidden md:flex items-center gap-4">
           <a
-            href="#cv"
+            href={cv}
             className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-4 py-2.5 rounded-lg shadow-sm hover:shadow-blue-500/20 transition-all"
           >
             <Download size={16} />

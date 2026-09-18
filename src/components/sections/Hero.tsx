@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { profile } from "../../data/profile";
+import cv from "../../assets/documents/CV_DADJA_Lamanawa_Godwin_1.pdf";
 import { ArrowRight, Download } from "lucide-react";
 
 export default function Hero() {
@@ -8,7 +9,7 @@ export default function Hero() {
       id="home"
       className="min-h-screen bg-slate-950 text-slate-100 flex items-center pt-20 relative overflow-hidden"
     >
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[500px] bg-blue-600/10 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-12 items-center relative z-10">
 
@@ -43,7 +44,8 @@ export default function Hero() {
             </a>
 
             <a
-              href="#cv"
+              href={cv}
+              download
               className="flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white font-medium px-6 py-3.5 rounded-xl border border-slate-800 hover:border-slate-700 transition-all"
             >
               <Download size={18} />
@@ -61,7 +63,7 @@ export default function Hero() {
           <div className="relative">
             <div className="absolute inset-0 bg-blue-600/20 rounded-full blur-2xl transform scale-110" />
 
-            <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-gradient-to-b from-slate-900 to-slate-950 border-2 border-blue-500/30 flex items-center justify-center shadow-2xl overflow-hidden">
+            <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-linear-to-b from-slate-900 to-slate-950 border-2 border-blue-500/30 flex items-center justify-center shadow-2xl overflow-hidden">
               <img
                 src="/image/profile.png"
                 alt="Godwin - Développeur Full-Stack"
