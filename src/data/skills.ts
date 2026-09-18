@@ -16,6 +16,8 @@ export const skills = [
       "PHP",
       "Laravel",
       "Python",
+      "JAVA",
+      "C/C++"
      
     ],
   },
