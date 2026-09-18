@@ -43,7 +43,7 @@ export const projects = [
     image: "/images/chat-souris.png",
     images: ["/image/jeux_chat/chat1.png","/image/jeux_chat/chat2.png"],
     technologies: ["Python", "Pygame"],
-    github: "#",
+    github: "https://github.com/dadj11/JEUX_videos-.git",
     demo: "#",
   },
 ];
