@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { profile } from "../../data/profile";
 import { Mail, Phone, MapPin, Send, CheckCircle2 } from "lucide-react";
@@ -6,28 +6,6 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function Contact() {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setStatus("sending");
-
-    try {
-      const response = await fetch(`https://formsubmit.co/ajax/${profile.email}`, {
-        method: "POST",
-        headers: { Accept: "application/json" },
-        body: new FormData(e.currentTarget),
-      });
-
-      if (!response.ok) {
-        throw new Error("L'envoi a échoué");
-      }
-
-      e.currentTarget.reset();
-      setStatus("success");
-    } catch {
-      setStatus("error");
-    }
-  };
 
   return (
     <section
@@ -157,7 +135,19 @@ export default function Contact() {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form
+              action={`https://formsubmit.co/${profile.email}`}
+              method="POST"
+              onSubmit={() => setStatus("sending")}
+              className="space-y-5"
+            >
+              <input
+                type="hidden"
+                name="_subject"
+                value="Nouveau message depuis le portfolio"
+              />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_captcha" value="false" />
               <div>
                 <label className="block text-xs font-medium text-slate-400 mb-2">Votre nom</label>
                   <input
