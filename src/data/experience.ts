@@ -36,7 +36,7 @@ export const experiences = [
     id: 3,
     period: "2024 - Aujourd'hui",
     type: "Formation",
-    title: "Licence 1 — Développement d'Applications",
+    title: "Licence 3 — Développement d'Applications",
     company: "IFNTI",
     location: "Sokodé, Togo",
     description:

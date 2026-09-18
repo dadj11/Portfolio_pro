@@ -5,6 +5,7 @@ import Skills from "../components/sections/Skills";
 import Projects from "../components/sections/Projects";
 import Contact from "../components/sections/Contact";
 import Experience from "../components/sections/Experience";
+import Footer from "../components/layout/Footer";
 export default function Home() {
   return (
     <div>
@@ -15,10 +16,9 @@ export default function Home() {
            <Skills/>
            <Projects/>
            <Experience/>
-           <Contact/>
-           
+           <Contact/> 
         </main>
-     
+        <Footer />
     </div>
   );
 }

@@ -12,5 +12,5 @@ export const profile = {
   email: "godwindadja@gmail.com",
 
   github: "https://github.com/dadj11",
-  linkedin: "https://www.linkedin.com/in/godwin-dadja",
+  linkedin: "https://www.linkedin.com/in/lamanawa-godwin-dadja-5714a0388",
 };
