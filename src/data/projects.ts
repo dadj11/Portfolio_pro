@@ -17,7 +17,7 @@ export const projects = [
     title: "Système de Gestion d'Hôtel",
     description:
       "Application de gestion hôtelière permettant de gérer les chambres, les réservations, les clients, les paiements et le suivi des activités de l'hôtel.",
-    image: "/images/hotel/hotel1.png",
+    image: "/image/hotel/hotel1.png",
     images:[],
     technologies: ["Laravel",  "Blade", "Tailwind CSS",  "SQLite"],
     github: "https://github.com/dadj11/Gestion_Hotel_Laravel.git",
